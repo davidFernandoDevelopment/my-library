@@ -1,0 +1,32 @@
+////
+/// @group Tools
+/// @access private
+/// @author David Sanchez
+////
+
+/// Convierte a rem
+/// @param {Length} $size - Longitud (px) que se convertira a rem.
+/// @return {Length}
+
+@function calculate-rem($size) {
+  $rem-size: $size/16px;
+  @return $rem-size * 1rem;
+}
+
+/// Convierte a pixeles
+/// @param {Length} $size - Longitud (rem, em o px) que se convertira a px.
+/// @return {Length}
+
+@function to-px($value) {
+  @if type-of($value) {
+    @if unit($value) == em {
+      @return ($value / 1em) * 16px;
+    } @else if unit($value) == rem {
+      @return ($value / 1rem) * 16px;
+    } @else {
+      @return $value;
+    }
+  } @else {
+    @error 'La funcion to-px() solo acepta numero en em y rem';
+  }
+}

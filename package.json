@@ -20,6 +20,7 @@
     "start": "start-storybook -p 6006",
     "build": "build-storybook",
     "sass": "node-sass -w src/bemit -o  src/bemit",
+    "sass:doc": "sassdoc src/bemit",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
