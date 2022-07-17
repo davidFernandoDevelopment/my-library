@@ -8,14 +8,13 @@
 /// @param {String} $prefix - Prefijo.
 /// @param {String} $sufix - Sufijo.
 
-@mixin generate-declaration($map, $prefix: '', $sufix: '') {
+@mixin mx-generate-declaration($map, $prefix: '', $sufix: '') {
   @each $property, $value in $map {
     #{$prefix}#{$property}#{$sufix}: #{$value};
   }
 }
 
-/// Usado para crear clases en la capa utilities.
-/// Genera rango para espaciados
+/// Generar rango para espaciados
 /// @param {string} $selector
 /// @param {String} $string - Selector base.
 /// @param {map} $properties - Propiedad(es) a los que se le aplicaran los valores.
@@ -27,16 +26,16 @@
 ///    border-radius: 0;
 /// }
 
-@mixin generate-spacers($selector, $properties, $negative: false) {
+@mixin mx-generate-spacers($selector, $properties, $negative: false) {
   $sign: if($negative, '-', '+');
-  $object: generate-spacers($sign);
+  $object: fn-generate-spacers($sign);
 
   @each $key, $value in $object {
     $new-selector: #{$selector}-#{$key};
-    $map: set-properties($properties, $value);
+    $map: fn-set-properties($properties, $value);
 
     &#{$new-selector} {
-      @include generate-declaration($map);
+      @include mx-generate-declaration($map);
     }
   }
 }
@@ -47,7 +46,7 @@
 /// @param {String} $sufix - Sufijo para el selector.
 /// @param {String} $prefix - Prefijo para el selector.
 
-@mixin generate-map-properties(
+@mixin mx-generate-map-properties(
   $map-properties: (),
   $base: '',
   $sufix: '',
@@ -59,10 +58,11 @@
     $name-temp: #{$base}-#{$key}#{$new-size};
 
     @each $property, $values in $map-values {
-      $name-final: #{$name-temp}-#{$property};
+      $new-property: if($property == '', $property, '-#{$property}');
+      $name-final: #{$name-temp}-#{$new-property};
 
       #{$prefix}#{$name-final}#{$sufix} {
-        @include generate-declaration($values);
+        @include mx-generate-declaration($values);
       }
     }
   }
@@ -71,7 +71,7 @@
 /// Convertir un mapa cuyo key son breakpoints a media queries es usado para cambiar las varibles para cada breakpoint.
 /// @param {Map} $values - Mapa cuyo key son breakpoints a media queries.
 
-@mixin declaration-for-breakpoints($values) {
+@mixin mx-declaration-for-breakpoints($values) {
   $values-xxs: map-get($values, 'xxs');
   $values-xs: map-get($values, 'xs');
   $values-sm: map-get($values, 'sm');
@@ -80,102 +80,65 @@
   $values-xl: map-get($values, 'xl');
   $values-xxl: map-get($values, 'xxl');
 
-  @include generate-declaration($values-xxs);
-  @include from(xs) {
-    @include generate-declaration($values-xs);
+  @include mx-generate-declaration($values-xxs);
+  @include mx-from(xs) {
+    @include mx-generate-declaration($values-xs);
   }
-  @include from(sm) {
-    @include generate-declaration($values-sm);
+  @include mx-from(sm) {
+    @include mx-generate-declaration($values-sm);
   }
-  @include from(md) {
-    @include generate-declaration($values-md);
+  @include mx-from(md) {
+    @include mx-generate-declaration($values-md);
   }
-  @include from(lg) {
-    @include generate-declaration($values-lg);
+  @include mx-from(lg) {
+    @include mx-generate-declaration($values-lg);
   }
-  @include from(xl) {
-    @include generate-declaration($values-xl);
+  @include mx-from(xl) {
+    @include mx-generate-declaration($values-xl);
   }
 }
 
 /// Genera clases con media query a partir de un map de propiedades.
-/// Acepta selectores adicionales como prefijos y/o sufijos variables,
-/// Maximo 1 variable, la variable de breakpoint ([xxs, xs, sm, ...])
-/// reemplazara el caracter '%'.
-///
 /// @param {list} $args
 /// @example SCSS - Modo de uso
 /// @include example(
 ///  ($paper-elevation, '.c-paper', '', ":not([class*=' -outline'])")
 /// );
 ///@example CSS - Se transforma en css:
-/// .c-paper--elevation-xs-16:not([class*='-xs-outline']) {
+/// .c-paper--elevation-16:not([class*='-xs-outline']) {
 ///   box-shadow: 0 8px 10px -5px var(--shadow-color-1), 0 16px 24px 2px var(--shadow-color-2), 0 6px 30px 5px var(--shadow-color-3);
 /// }
 
-@mixin generator-classes-with-bp-sufix-prefix-base($new-size: '', $args...) {
+@mixin mx-generator-classes-base($new-size: '', $args...) {
   @each $map-properties, $name, $prefix, $sufix, $multi in $args {
-    $suf: if($sufix, fn-str-replace($sufix, '%', $new-size), '');
-    $pref: if($prefix, fn-str-replace($prefix, '%', $new-size), '');
-
-    @each $key, $map-values in $map-properties {
-      $selector-base: '#{$name}-#{$key}#{$new-size}';
-      @if type-of($map-values) == 'map' {
-        @each $value in map-keys($map-values) {
-          $props: ();
-          $value-selector: if($value != '', -#{$value}, #{$value});
-          $selector: #{$selector-base}#{$value-selector};
-
-          @if length($props) == 0 {
-            $props: map-get($map-values, $value);
-          }
-
-          @if $multi {
-            $list: ();
-
-            @each $size in $sizes {
-              $new-size: fn-convert-bp($size);
-              $selector: '#{$name}-#{$key}#{$new-size}#{$value-selector}';
-              $selector-temp: #{$pref}#{$selector}#{$suf};
-
-              $list: append($list, $selector-temp, 'comma');
-            }
-
-            #{$list} {
-              @include generate-declaration($props);
-            }
-          } @else {
-            #{$pref}#{$selector}#{$suf} {
-              @include generate-declaration($props);
-            }
-          }
-        }
-      }
-    }
+    @include mx-generate-map-properties(
+      $map-properties,
+      $name,
+      $prefix,
+      $sufix,
+      $new-size
+    );
   }
 }
 
-@mixin generator-classes-with-bp-sufix-prefix($bp: 'from', $args...) {
+/// Genera clases con media query a partir de un map de propiedades.
+/// @param {list} $args
+
+@mixin mx-generator-classes($bp: 'from', $args...) {
   @each $size in $sizes {
     $new-size: fn-convert-bp($size);
 
     @if $bp == 'from' {
       @include from($size) {
-        @include generator-classes-with-bp-sufix-prefix-base(
-          $new-size,
-          $args...
-        );
+        @include mx-generator-classes($new-size, $args...);
       }
     } @else if $bp == 'only' {
       @if $size == 'xxs' {
-        @include generator-classes-with-bp-sufix-prefix-base('', $args...);
+        @include mx-generator-classes('', $args...);
       }
 
       @include only($size) {
-        @include generator-classes-with-bp-sufix-prefix-base(
-          $new-size,
-          $args...
-        );
+        @include mx-generator-classes($new-size, $args...);
       }
     }
   }

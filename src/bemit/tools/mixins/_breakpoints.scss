@@ -6,7 +6,7 @@
 /// Hasta el punto de interrupcion.
 /// @param {String | Number} $bp - Breakpoint que se tomara como máximo.
 
-@mixin to($bp) {
+@mixin mx-to($bp) {
   @if fn-is-core-breakpoint($bp) {
     @if $bp == nth($sizes, 1) {
       @content;
@@ -27,7 +27,7 @@
 /// Desde el punto de interrupcion.
 /// @param {String | Number} $bp - Breakpoint que se tomara como minimo.
 
-@mixin from($bp) {
+@mixin mx-from($bp) {
   @if fn-is-core-breakpoint($bp) {
     @if $bp == nth($sizes, 1) {
       @content;
@@ -49,7 +49,7 @@
 /// @param {String | Number} $from - Breakpoint que se tomara como minimo.
 /// @param {String | Number} $to - Breakpoint que se tomara como máximo.
 
-@mixin fromTo($from, $to) {
+@mixin mx-fromTo($from, $to) {
   @if fn-is-core-breakpoint($from) and fn-is-core-breakpoint($to) {
     @if fn-get-breakpoint($to) > fn-get-breakpoint($from) {
       @media screen and (min-width: fn-get-breakpoint($from)) and (max-width: #{fn-get-breakpoint($to) - 0.1}) {
@@ -90,17 +90,17 @@
 /// Caso especifico para el mixin fronTo, solo se toma 1 región de los breakpoints.
 /// @param {String | Number} $bp - Breakpoint especifico.
 
-@mixin only($bp) {
+@mixin mx-only($bp) {
   @if fn-is-core-breakpoint($bp) {
     @if $bp != nth($sizes, length($sizes)) {
       $index: index($sizes, $bp);
       $bp-next: nth($sizes, $index + 1);
 
-      @include fromTo($bp, $bp-next) {
+      @include mx-fromTo($bp, $bp-next) {
         @content;
       }
     } @else {
-      @include from($bp) {
+      @include mx-from($bp) {
         @content;
       }
     }
@@ -113,10 +113,10 @@
 /// @param {String} $prefix 'o' - Prefijo que representa la capa de ITCSS.
 /// @param {String} $sufix - Sufijo que se añadirá al nombre del selector.
 
-@mixin breakpoints($prefix: 'o', $sufix: '') {
+@mixin mx-breakpoints($prefix: 'o', $sufix: '') {
   @each $size in $sizes {
     $new-size: fn-convert-bp($size);
-    @include from($size) {
+    @include mx-from($size) {
       .#{$prefix}#{$new-size}#{$sufix} {
         @content;
       }
