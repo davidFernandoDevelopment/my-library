@@ -1,5 +1,6 @@
 {
   "name": "my-library",
+  "author": "David F. Sánchez Dorregaray",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
