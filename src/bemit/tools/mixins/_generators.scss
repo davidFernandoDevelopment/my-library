@@ -99,16 +99,18 @@
 }
 
 /// Genera clases con media query a partir de un map de propiedades.
-/// @param {list} $args
-/// @example SCSS - Modo de uso
-/// @include example(
-///  ($paper-elevation, '.c-paper', '', ":not([class*=' -outline'])")
-/// );
-///@example CSS - Se transforma en css:
-/// .c-paper--elevation-16:not([class*='-xs-outline']) {
+/// @param {String} $new-size - Breakpoint en el que se generarán los estilos.
+/// @param {list} $args... - Lista de argumentos.
+/// @example - Modo de uso en SASS:
+/// at-root{
+///   @include mx-generator-classes-base(
+///     'xs', ($paper-elevation, '.c-paper', '', ":not([class*=' -outline'])")
+///   )
+/// };
+/// @example - Se conviente en CSS:
+/// .c-paper--elevation-xs-16:not([class*='-xs-outline']) {
 ///   box-shadow: 0 8px 10px -5px var(--shadow-color-1), 0 16px 24px 2px var(--shadow-color-2), 0 6px 30px 5px var(--shadow-color-3);
 /// }
-
 @mixin mx-generator-classes-base($new-size: '', $args...) {
   @each $map-properties, $name, $prefix, $sufix, $multi in $args {
     @include mx-generate-map-properties(
