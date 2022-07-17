@@ -8,7 +8,7 @@
 /// @param {String} $bp - Breakpoint que se va a verificar
 /// @return {Boolean}
 
-@function is-core-breakpoint($bp) {
+@function fn-is-core-breakpoint($bp) {
   @if index($sizes, $bp) {
     @return true;
   } @else {
@@ -20,7 +20,7 @@
 /// @param {Number} $bp - Breakpoint que se analizara
 /// @return {Boolean}
 
-@function is-breakpoint-valid($bp) {
+@function fn-is-breakpoint-valid($bp) {
   @if type-of($bp) ==
     number and
     (unit($bp) == 'px' or unit($bp) == 'em' or unit($bp) == 'rem')
@@ -35,7 +35,7 @@
 /// @param {String} $bp - Alias del brekpoint que se quiere obtener
 /// @return {Number}
 
-@function get-breakpoint($alias-bp) {
+@function fn-get-breakpoint($alias-bp) {
   @return map-get($breakpoints, $alias-bp);
 }
 
@@ -44,7 +44,7 @@
 /// @param {Map} $name-alias - Mapa de alias que representan propiedades de CSS.
 /// @return {Map} - Mapa de propiedades adjuntado con las propiedades base.
 
-@function add-base-properties($properties, $name-alias) {
+@function fn-add-base-properties($properties, $name-alias) {
   $base-properties: 'inherit', 'initial', 'unset';
   $new-map: ();
 
@@ -78,7 +78,7 @@
 /// @param {String} - punto de interrupción a transformar para usar en el selector.
 /// @return {String} - punto de interrupción transformado para usar en el selector.
 
-@function convert-bp($size) {
+@function fn-convert-bp($size) {
   $new-size: if($size == nth($sizes, 1), '', '-#{$size}');
   @return $new-size;
 }

@@ -50,11 +50,11 @@
 
 @function fn-property-generator($property, $object: (), $options: ()) {
   $res: ();
-  $replace: str-replace($property, '%', '');
+  $replace: fn-str-replace($property, '%', '');
   $res: (#{$replace}: fn-property-value-generator($object, $replace));
 
   @each $opt in $options {
-    $new-property: str-replace($property, '%', '-#{$opt}');
+    $new-property: fn-str-replace($property, '%', '-#{$opt}');
     $new-map: fn-property-value-generator($object, $new-property);
 
     $res: map-merge($res, (#{$new-property}: $new-map));
@@ -148,11 +148,11 @@
   $res-map: ();
 
   @each $as in $alias {
-    $res: (#{str-replace($as, '%', '')}: str-replace($as, '%', ''));
+    $res: (#{fn-str-replace($as, '%', '')}: fn-str-replace($as, '%', ''));
 
     @each $key, $value in $options {
-      $new-as: str-replace($as, '%', '-#{$key}');
-      $new-as-1: if($value, str-replace($as, '%', '-#{$value}'), $new-as);
+      $new-as: fn-str-replace($as, '%', '-#{$key}');
+      $new-as-1: if($value, fn-str-replace($as, '%', '-#{$value}'), $new-as);
 
       $res: map-merge($res, (#{$new-as}: $new-as-1));
     }

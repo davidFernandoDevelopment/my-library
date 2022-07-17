@@ -55,7 +55,7 @@
   $size: nth($sizes, 1)
 ) {
   @each $key, $map-values in $map-properties {
-    $new-size: convert-bp($size);
+    $new-size: fn-convert-bp($size);
     $name-temp: #{$base}-#{$key}#{$new-size};
 
     @each $property, $values in $map-values {
@@ -115,8 +115,8 @@
 
 @mixin generator-classes-with-bp-sufix-prefix-base($new-size: '', $args...) {
   @each $map-properties, $name, $prefix, $sufix, $multi in $args {
-    $suf: if($sufix, str-replace($sufix, '%', $new-size), '');
-    $pref: if($prefix, str-replace($prefix, '%', $new-size), '');
+    $suf: if($sufix, fn-str-replace($sufix, '%', $new-size), '');
+    $pref: if($prefix, fn-str-replace($prefix, '%', $new-size), '');
 
     @each $key, $map-values in $map-properties {
       $selector-base: '#{$name}-#{$key}#{$new-size}';
@@ -134,7 +134,7 @@
             $list: ();
 
             @each $size in $sizes {
-              $new-size: convert-bp($size);
+              $new-size: fn-convert-bp($size);
               $selector: '#{$name}-#{$key}#{$new-size}#{$value-selector}';
               $selector-temp: #{$pref}#{$selector}#{$suf};
 
@@ -157,7 +157,7 @@
 
 @mixin generator-classes-with-bp-sufix-prefix($bp: 'from', $args...) {
   @each $size in $sizes {
-    $new-size: convert-bp($size);
+    $new-size: fn-convert-bp($size);
 
     @if $bp == 'from' {
       @include from($size) {

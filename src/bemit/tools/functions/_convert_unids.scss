@@ -8,7 +8,7 @@
 /// @param {Length} $size - Longitud (px) que se convertira a rem.
 /// @return {Length}
 
-@function calculate-rem($size) {
+@function fn-calculate-rem($size) {
   $rem-size: $size/16px;
   @return $rem-size * 1rem;
 }
@@ -17,7 +17,7 @@
 /// @param {Length} $size - Longitud (rem, em o px) que se convertira a px.
 /// @return {Length}
 
-@function to-px($value) {
+@function fn-to-px($value) {
   @if type-of($value) {
     @if unit($value) == em {
       @return ($value / 1em) * 16px;
@@ -27,6 +27,6 @@
       @return $value;
     }
   } @else {
-    @error 'La funcion to-px() solo acepta numero en em y rem';
+    @error 'La funcion fn-to-px() solo acepta numero en em y rem';
   }
 }

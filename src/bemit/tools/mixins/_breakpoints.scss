@@ -7,15 +7,15 @@
 /// @param {String | Number} $bp - Breakpoint que se tomara como máximo.
 
 @mixin to($bp) {
-  @if is-core-breakpoint($bp) {
+  @if fn-is-core-breakpoint($bp) {
     @if $bp == nth($sizes, 1) {
       @content;
     } @else {
-      @media screen and (max-width: get-breakpoint($bp)) {
+      @media screen and (max-width: fn-get-breakpoint($bp)) {
         @content;
       }
     }
-  } @else if is-breakpoint-valid($bp) {
+  } @else if fn-is-breakpoint-valid($bp) {
     @media screen and (max-width: $bp) {
       @content;
     }
@@ -28,15 +28,15 @@
 /// @param {String | Number} $bp - Breakpoint que se tomara como minimo.
 
 @mixin from($bp) {
-  @if is-core-breakpoint($bp) {
+  @if fn-is-core-breakpoint($bp) {
     @if $bp == nth($sizes, 1) {
       @content;
     } @else {
-      @media screen and (min-width: get-breakpoint($bp)) {
+      @media screen and (min-width: fn-get-breakpoint($bp)) {
         @content;
       }
     }
-  } @else if is-breakpoint-valid($bp) {
+  } @else if fn-is-breakpoint-valid($bp) {
     @media screen and (min-width: $bp) {
       @content;
     }
@@ -50,18 +50,18 @@
 /// @param {String | Number} $to - Breakpoint que se tomara como máximo.
 
 @mixin fromTo($from, $to) {
-  @if is-core-breakpoint($from) and is-core-breakpoint($to) {
-    @if get-breakpoint($to) > get-breakpoint($from) {
-      @media screen and (min-width: get-breakpoint($from)) and (max-width: #{get-breakpoint($to) - 0.1}) {
+  @if fn-is-core-breakpoint($from) and fn-is-core-breakpoint($to) {
+    @if fn-get-breakpoint($to) > fn-get-breakpoint($from) {
+      @media screen and (min-width: fn-get-breakpoint($from)) and (max-width: #{fn-get-breakpoint($to) - 0.1}) {
         @content;
       }
     } @else {
       @error 'El segundo argumento debe ser mayor';
     }
-  } @else if is-core-breakpoint($from) and not is-core-breakpoint($to) {
-    @if is-breakpoint-valid($to) {
-      @if to-px($to) > to-px(get-breakpoint($from)) {
-        @media screen and (min-width: get-breakpoint($from)) and (max-width: to-px($to)) {
+  } @else if fn-is-core-breakpoint($from) and not fn-is-core-breakpoint($to) {
+    @if fn-is-breakpoint-valid($to) {
+      @if fn-to-px($to) > fn-to-px(fn-get-breakpoint($from)) {
+        @media screen and (min-width: fn-get-breakpoint($from)) and (max-width: fn-to-px($to)) {
           @content;
         }
       } @else {
@@ -70,10 +70,10 @@
     } @else {
       @error "El segundo argumento debe ser: [#{$sizes}]";
     }
-  } @else if not is-core-breakpoint($from) and is-core-breakpoint($to) {
-    @if is-breakpoint-valid($from) {
-      @if to-px(get-breakpoint($to)) > to-px($from) {
-        @media screen and (min-width: to-px($from)) and (max-width: get-breakpoint($to)) {
+  } @else if not fn-is-core-breakpoint($from) and fn-is-core-breakpoint($to) {
+    @if fn-is-breakpoint-valid($from) {
+      @if fn-to-px(fn-get-breakpoint($to)) > fn-to-px($from) {
+        @media screen and (min-width: fn-to-px($from)) and (max-width: fn-get-breakpoint($to)) {
           @content;
         }
       } @else {
@@ -91,7 +91,7 @@
 /// @param {String | Number} $bp - Breakpoint especifico.
 
 @mixin only($bp) {
-  @if is-core-breakpoint($bp) {
+  @if fn-is-core-breakpoint($bp) {
     @if $bp != nth($sizes, length($sizes)) {
       $index: index($sizes, $bp);
       $bp-next: nth($sizes, $index + 1);
@@ -115,7 +115,7 @@
 
 @mixin breakpoints($prefix: 'o', $sufix: '') {
   @each $size in $sizes {
-    $new-size: convert-bp($size);
+    $new-size: fn-convert-bp($size);
     @include from($size) {
       .#{$prefix}#{$new-size}#{$sufix} {
         @content;
