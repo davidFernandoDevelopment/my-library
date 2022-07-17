@@ -9,7 +9,7 @@
 /// @param {Number | String | Boolean} $value - Valores que seran asignados a la(s) propiedad(es).
 /// @return {Map} - Mapa de propiedad(es) - valor.
 
-@function set-properties($properties, $value) {
+@function fn-set-properties($properties, $value) {
   $res: ();
   @if (length($properties) > 1) {
     @each $property in $properties {
@@ -27,13 +27,13 @@
 /// @param {String} $property - Propiedad CSS.
 /// @return {Map} - Mapa de valores para una propiedad.
 
-@function property-value-generator($object, $property) {
+@function fn-property-value-generator($object, $property) {
   $res: ();
 
   @each $key, $value in $object {
     $new-value: if($value == null, $key, $value);
     $new-map: (
-      $key: set-properties($property, $new-value),
+      $key: fn-set-properties($property, $new-value),
     );
 
     $res: map-merge($res, $new-map);
@@ -48,14 +48,14 @@
 /// @param {List} $option () - Conjunto de valores que reemplazaran el caracter '%' de property.
 /// @return {Map} - Mapa de propiedades.
 
-@function property-generator($property, $object: (), $options: ()) {
+@function fn-property-generator($property, $object: (), $options: ()) {
   $res: ();
   $replace: str-replace($property, '%', '');
-  $res: (#{$replace}: property-value-generator($object, $replace));
+  $res: (#{$replace}: fn-property-value-generator($object, $replace));
 
   @each $opt in $options {
     $new-property: str-replace($property, '%', '-#{$opt}');
-    $new-map: property-value-generator($object, $new-property);
+    $new-map: fn-property-value-generator($object, $new-property);
 
     $res: map-merge($res, (#{$new-property}: $new-map));
   }
@@ -68,7 +68,7 @@
 /// @param {String} $multiplier - Multiplicador puede ser en %.
 /// @return {Map} - Mapa de key: numero  y value: numero | porcentaje.
 
-@function generate-number($num, $multiplier: 1) {
+@function fn-generate-number($num, $multiplier: 1) {
   $object: ();
   @for $i from 1 through $num {
     $selector: if(
@@ -88,7 +88,7 @@
 /// @param {String} $sign - Signo de la unidad
 /// @return {Map}  Devuelve mapa con key: unidades y value: con unidades rem.
 
-@function generate-spacers($sign: '+') {
+@function fn-generate-spacers($sign: '+') {
   $object: ();
 
   @for $i from 0 through 14 {
@@ -144,7 +144,7 @@
 /// @param {List} $alias - alias de propiedad
 /// @param {List} $options - Lista de opaciones que reemplazaran el caracter '%' de alias
 /// @return {Map} - Mapa de alias.
-@function generate-alias($alias, $options) {
+@function fn-generate-alias($alias, $options) {
   $res-map: ();
 
   @each $as in $alias {
@@ -167,7 +167,7 @@
 /// @param {List} $args - Lista de mapas por unir.
 /// @return {Map} - Mapa unificado.
 
-@function map-merge-modified($args...) {
+@function fn-map-merge-modified($args...) {
   $res: ();
 
   @each $map in $args {

@@ -1,0 +1,182 @@
+////
+/// @group Tools
+/// @author David Sanchez
+////
+
+/// Generar declaraciones CSS a partir de un mapa opcionalmente se puede agregar prefijos y sufijos.
+/// @param {Map} $map - Map de entrada.
+/// @param {String} $prefix - Prefijo.
+/// @param {String} $sufix - Sufijo.
+
+@mixin generate-declaration($map, $prefix: '', $sufix: '') {
+  @each $property, $value in $map {
+    #{$prefix}#{$property}#{$sufix}: #{$value};
+  }
+}
+
+/// Usado para crear clases en la capa utilities.
+/// Genera rango para espaciados
+/// @param {string} $selector
+/// @param {String} $string - Selector base.
+/// @param {map} $properties - Propiedad(es) a los que se le aplicaran los valores.
+/// @param {Boolean} $sign false - Es negativo ?.
+/// @example SCSS - Modo de uso
+///  @include generate-spacers("radius", "border-radius");
+/// @example CSS - Se transforma en css:
+/// .radius-0 {
+///    border-radius: 0;
+/// }
+
+@mixin generate-spacers($selector, $properties, $negative: false) {
+  $sign: if($negative, '-', '+');
+  $object: generate-spacers($sign);
+
+  @each $key, $value in $object {
+    $new-selector: #{$selector}-#{$key};
+    $map: set-properties($properties, $value);
+
+    &#{$new-selector} {
+      @include generate-declaration($map);
+    }
+  }
+}
+
+/// Generar reglas CSS a partir de un mapa de propiedades de componentes u objetos.
+/// @param {Map} $map-properties - Mapa de propiedades de componentes u objetos.
+/// @param {String} $base - Selector base.
+/// @param {String} $sufix - Sufijo para el selector.
+/// @param {String} $prefix - Prefijo para el selector.
+
+@mixin generate-map-properties(
+  $map-properties: (),
+  $base: '',
+  $sufix: '',
+  $prefix: '',
+  $size: nth($sizes, 1)
+) {
+  @each $key, $map-values in $map-properties {
+    $new-size: convert-bp($size);
+    $name-temp: #{$base}-#{$key}#{$new-size};
+
+    @each $property, $values in $map-values {
+      $name-final: #{$name-temp}-#{$property};
+
+      #{$prefix}#{$name-final}#{$sufix} {
+        @include generate-declaration($values);
+      }
+    }
+  }
+}
+
+/// Convertir un mapa cuyo key son breakpoints a media queries es usado para cambiar las varibles para cada breakpoint.
+/// @param {Map} $values - Mapa cuyo key son breakpoints a media queries.
+
+@mixin declaration-for-breakpoints($values) {
+  $values-xxs: map-get($values, 'xxs');
+  $values-xs: map-get($values, 'xs');
+  $values-sm: map-get($values, 'sm');
+  $values-md: map-get($values, 'md');
+  $values-lg: map-get($values, 'lg');
+  $values-xl: map-get($values, 'xl');
+  $values-xxl: map-get($values, 'xxl');
+
+  @include generate-declaration($values-xxs);
+  @include from(xs) {
+    @include generate-declaration($values-xs);
+  }
+  @include from(sm) {
+    @include generate-declaration($values-sm);
+  }
+  @include from(md) {
+    @include generate-declaration($values-md);
+  }
+  @include from(lg) {
+    @include generate-declaration($values-lg);
+  }
+  @include from(xl) {
+    @include generate-declaration($values-xl);
+  }
+}
+
+/// Genera clases con media query a partir de un map de propiedades.
+/// Acepta selectores adicionales como prefijos y/o sufijos variables,
+/// Maximo 1 variable, la variable de breakpoint ([xxs, xs, sm, ...])
+/// reemplazara el caracter '%'.
+///
+/// @param {list} $args
+/// @example SCSS - Modo de uso
+/// @include example(
+///  ($paper-elevation, '.c-paper', '', ":not([class*=' -outline'])")
+/// );
+///@example CSS - Se transforma en css:
+/// .c-paper--elevation-xs-16:not([class*='-xs-outline']) {
+///   box-shadow: 0 8px 10px -5px var(--shadow-color-1), 0 16px 24px 2px var(--shadow-color-2), 0 6px 30px 5px var(--shadow-color-3);
+/// }
+
+@mixin generator-classes-with-bp-sufix-prefix-base($new-size: '', $args...) {
+  @each $map-properties, $name, $prefix, $sufix, $multi in $args {
+    $suf: if($sufix, str-replace($sufix, '%', $new-size), '');
+    $pref: if($prefix, str-replace($prefix, '%', $new-size), '');
+
+    @each $key, $map-values in $map-properties {
+      $selector-base: '#{$name}-#{$key}#{$new-size}';
+      @if type-of($map-values) == 'map' {
+        @each $value in map-keys($map-values) {
+          $props: ();
+          $value-selector: if($value != '', -#{$value}, #{$value});
+          $selector: #{$selector-base}#{$value-selector};
+
+          @if length($props) == 0 {
+            $props: map-get($map-values, $value);
+          }
+
+          @if $multi {
+            $list: ();
+
+            @each $size in $sizes {
+              $new-size: convert-bp($size);
+              $selector: '#{$name}-#{$key}#{$new-size}#{$value-selector}';
+              $selector-temp: #{$pref}#{$selector}#{$suf};
+
+              $list: append($list, $selector-temp, 'comma');
+            }
+
+            #{$list} {
+              @include generate-declaration($props);
+            }
+          } @else {
+            #{$pref}#{$selector}#{$suf} {
+              @include generate-declaration($props);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generator-classes-with-bp-sufix-prefix($bp: 'from', $args...) {
+  @each $size in $sizes {
+    $new-size: convert-bp($size);
+
+    @if $bp == 'from' {
+      @include from($size) {
+        @include generator-classes-with-bp-sufix-prefix-base(
+          $new-size,
+          $args...
+        );
+      }
+    } @else if $bp == 'only' {
+      @if $size == 'xxs' {
+        @include generator-classes-with-bp-sufix-prefix-base('', $args...);
+      }
+
+      @include only($size) {
+        @include generator-classes-with-bp-sufix-prefix-base(
+          $new-size,
+          $args...
+        );
+      }
+    }
+  }
+}
