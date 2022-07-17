@@ -22,6 +22,7 @@
     "build": "build-storybook",
     "sass": "node-sass -w src/bemit -o  src/bemit",
     "sass:doc": "sassdoc src/bemit",
+    "jsdoc": "jsdoc -c jsdoc.json",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

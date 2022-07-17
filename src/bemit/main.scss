@@ -1,2 +1,10 @@
-@import 'tools/functions/index';
-@import 'tools/mixins/index';
+@charset 'utf-8';
+
+// SETTINGS: Variables globales.
+@import 'settings/index';
+
+//  SETTINGS: Variables de tema (colores y tipografía).
+@import 'theme/index';
+
+// TOOLS: Mixins y Funciones
+@import 'tools/index';
