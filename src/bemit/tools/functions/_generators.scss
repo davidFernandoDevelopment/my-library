@@ -16,7 +16,7 @@
       $res: map-merge($res, (#{$property}: $value));
     }
   } @else {
-    $res: (#{$property}: $value);
+    $res: (#{$properties}: $value);
   }
 
   @return $res;
