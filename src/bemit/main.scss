@@ -10,5 +10,7 @@
 @import 'tools/index';
 
 // GENERICS: Inicialización de variables y estilos de reset.
-@import 'generics/generic';
+@import 'generics/generics';
 
+// TAGS: Estilos globales para las etiquetas.
+@import 'tags/tags';
