@@ -131,7 +131,7 @@
     $new-size: fn-convert-bp($size);
 
     @if $bp == 'from' {
-      @include from($size) {
+      @include mx-from($size) {
         @include mx-generator-classes($new-size, $args...);
       }
     } @else if $bp == 'only' {
