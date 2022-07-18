@@ -1,0 +1,45 @@
+$theme-colors: (
+  'primary': (
+    'light': var(--primary-light),
+    'main': var(--primary-main),
+    'dark': var(--primary-dark),
+  ),
+  'secondary': (
+    'light': var(--secondary-light),
+    'main': var(--secondary-main),
+    'dark': var(--secondary-dark),
+  ),
+  'success': (
+    'light': var(--success-light),
+    'main': var(--success-main),
+    'dark': var(--success-dark),
+  ),
+  'info': (
+    'light': var(--info-light),
+    'main': var(--info-main),
+    'dark': var(--info-dark),
+  ),
+  'warning': (
+    'light': var(--warning-light),
+    'main': var(--warning-main),
+    'dark': var(--warning-dark),
+  ),
+  'danger': (
+    'light': var(--danger-light),
+    'main': var(--danger-main),
+    'dark': var(--danger-dark),
+  ),
+  'title': (
+    'light': var(--gray-500),
+    'main': var(--gray-600),
+    'dark': var(--gray-700),
+  ),
+  'background': (
+    'primary': var(--main-bg-color),
+    'secondary': var(--second-bg-color),
+  ),
+  'white': var(--color-white),
+  'black': var(--color-black),
+  'disabled': var(--gray-400),
+  'transparent': transparent,
+);
