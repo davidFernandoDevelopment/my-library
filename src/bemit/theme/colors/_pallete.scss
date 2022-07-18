@@ -1,3 +1,5 @@
+@import '../../tools/functions/breakpoints';
+
 $dark-theme: 'theme-mode-dark';
 
 $blue: (
@@ -77,7 +79,7 @@ $palletes: (
   }
 }
 @each $size in $sizes {
-  $new-size: convert-bp($size);
+  $new-size: fn-convert-bp($size);
 
   @each $name-color, $values in $palletes {
     .u-pallete#{$new-size}-#{$name-color} {
