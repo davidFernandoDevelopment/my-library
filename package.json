@@ -1,8 +1,24 @@
 {
-  "name": "my-library",
+  "name": "my-component-library-dafersando",
   "author": "David F. Sánchez Dorregaray",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/davidFernandoDevelopment/my-library",
+    "type": "git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -20,7 +36,7 @@
   },
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build": "build-storybook",
+    "build": "TODO: Implementar",
     "sass": "node-sass -w src/bemit -o  src/bemit",
     "sass:doc": "sassdoc src/bemit",
     "jsdoc": "jsdoc -c jsdoc.json",
