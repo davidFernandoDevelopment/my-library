@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
+import '../../main.css';
 
 
 import { generateComponentClasses } from '../../../utilities/classForReact';
@@ -19,7 +20,7 @@ export type ButtonProps =
 
 
 
-const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(function Button<C extends React.ElementType>({
+export const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(function Button<C extends React.ElementType>({
     as,
     children,
     className,

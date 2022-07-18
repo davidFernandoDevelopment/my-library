@@ -1,3 +1,7 @@
+@import '../../tools/mixins/generators';
+@import '../../tools/mixins/breakpoints';
+@import '../../tools/functions/breakpoints';
+
 $theme-colors: (
   'primary': (
     'light': var(--primary-light),
@@ -43,3 +47,19 @@ $theme-colors: (
   'disabled': var(--gray-400),
   'transparent': transparent,
 );
+
+@each $size in $sizes {
+  $new-size: fn-convert-bp($size);
+
+  @include mx-from($size) {
+    @each $key, $value in $theme-colors {
+      @if length($value) >1 {
+        @at-root {
+          .u-theme-color#{$new-size}-#{$key} {
+            @include mx-generate-declaration($value, '--');
+          }
+        }
+      }
+    }
+  }
+}

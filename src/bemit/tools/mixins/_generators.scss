@@ -1,3 +1,7 @@
+@import '../../settings/breakpoints';
+@import '../functions/breakpoints';
+@import '../mixins/breakpoints';
+
 ////
 /// @group Tools
 /// @author David Sanchez
@@ -59,7 +63,7 @@
 
     @each $property, $values in $map-values {
       $new-property: if($property == '', $property, '-#{$property}');
-      $name-final: #{$name-temp}-#{$new-property};
+      $name-final: #{$name-temp}#{$new-property};
 
       #{$prefix}#{$name-final}#{$sufix} {
         @include mx-generate-declaration($values);
@@ -128,19 +132,17 @@
 
 @mixin mx-generator-classes($bp: 'from', $args...) {
   @each $size in $sizes {
-    $new-size: fn-convert-bp($size);
-
     @if $bp == 'from' {
       @include mx-from($size) {
-        @include mx-generator-classes($new-size, $args...);
+        @include mx-generator-classes-base($size, $args...);
       }
     } @else if $bp == 'only' {
       @if $size == 'xxs' {
-        @include mx-generator-classes('', $args...);
+        @include mx-generator-classes-base('', $args...);
       }
 
       @include only($size) {
-        @include mx-generator-classes($new-size, $args...);
+        @include mx-generator-classes-base($size, $args...);
       }
     }
   }
