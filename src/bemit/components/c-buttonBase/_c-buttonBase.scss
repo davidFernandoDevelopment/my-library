@@ -1,0 +1,17 @@
+.c-buttonBase {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  $b: &;
+
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+
+  &--disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+}
