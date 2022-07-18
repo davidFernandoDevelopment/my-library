@@ -1,2 +1,1 @@
-export { Button } from './stories/Button';
-
+export { Button } from './bemit/components/c-button/Button';
