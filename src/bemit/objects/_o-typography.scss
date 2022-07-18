@@ -1,4 +1,4 @@
-@include breakpoints {
+@include mx-breakpoints {
   // Assign heading styles
   &-big-title {
     @include big-title;
