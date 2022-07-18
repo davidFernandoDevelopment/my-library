@@ -12,7 +12,7 @@ import { CPolymorphicRef, PolymorphicRef, PropsRef } from '../../../generic/Poly
 
 export type ButtonBaseProps =
     & SystemCButtonBaseProperties
-    & Omit<SystemSDisplayProperties, keyof ButtonBaseProperties> // TIPO PARA UTILIDAD
+    // & Omit<SystemSDisplayProperties, keyof ButtonBaseProperties> // TIPO PARA UTILIDAD
     & Omit<TouchRippleProps, keyof ButtonBaseProperties>; // TIPO PARA COMPONENTE-DEP
 
 

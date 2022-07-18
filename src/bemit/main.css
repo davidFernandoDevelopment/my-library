@@ -711,13 +711,13 @@
   --body-line-height: 1.6;
   --letter-spacing-heading: 0;
   --letter-spacing-body: 0;
-  --big-font-size: calculate-rem(32px);
-  --h1-font-size: calculate-rem(24px);
-  --h2-font-size: calculate-rem(20px);
-  --h3-font-size: calculate-rem(18px);
-  --normal-font-size: calculate-rem(15px);
-  --small-font-size: calculate-rem(13px);
-  --smaller-font-size: calculate-rem(12px);
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.9375rem;
+  --small-font-size: 0.8125rem;
+  --smaller-font-size: 0.75rem;
   --color-white: white;
   --color-black: black;
   --title-color: var(--gray-700);
@@ -786,18 +786,18 @@
 
 @media screen and (min-width: 768px) {
   :root {
-    --big-font-size: calculate-rem(40px);
-    --h1-font-size: calculate-rem(32px); } }
+    --big-font-size: 2.5rem;
+    --h1-font-size: 2rem; } }
 
 @media screen and (min-width: 1024px) {
   :root {
-    --big-font-size: calculate-rem(48px);
-    --h1-font-size: calculate-rem(36px);
-    --h2-font-size: calculate-rem(24px);
-    --h3-font-size: calculate-rem(20px);
-    --normal-font-size: calculate-rem(16px);
-    --small-font-size: calculate-rem(14px);
-    --smaler-font-size: calculate-rem(13px); } }
+    --big-font-size: 3rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaler-font-size: 0.8125rem; } }
 
 :root .theme-mode-dark {
   --title-color: var(--gray-300);

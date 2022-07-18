@@ -19,7 +19,9 @@ type ButtonBasePropertyBasic = {
     disableRipple: boolean;
 };
 type ButtonBasePropertyValues = {};
-const BUTTON_BASE_UTILITIES = [...DISPLAY];
+const BUTTON_BASE_UTILITIES: any[] = [
+    // ...DISPLAY
+];
 const BUTTON_BASE_INHERIT = ['disabled'];
 export type ButtonBaseProperties = ButtonBasePropertyValues & ButtonBasePropertyBasic;
 export type SystemCButtonBaseProperties = ComponentPropertyValues<ButtonBasePropertyValues> & ComponentPropertyBasic<ButtonBasePropertyBasic>;
@@ -53,6 +55,7 @@ export const IconBasePropertySummary: ComponentPropertySummary = {
 
 const BUTTON = [['size', 'c-button--size'], ['variant', 'c-button--variant'], ['fullWidth', 'c-button--fullWidth'], ['disableElevation', 'c-button--disableElevation'], ['disabled', 'c-button--disabled']] as const;
 type ButtonPropertyBasic = {
+    text: string;
     endIcon: React.ReactNode;
     startIcon: React.ReactNode;
     variant: 'default' | 'ghost' | 'link' | 'light';
@@ -61,13 +64,16 @@ type ButtonPropertyBasic = {
     disableElevation: boolean;
 };
 type ButtonPropertyValues = {
+    /**
+     * Tamaño del botón
+     */
     size: Sizes,
 };
 const BUTTON_DEFAULTS: Partial<ButtonProperties> = {
     variant: 'default',
     size: 'normal'
 };
-const BUTTON_UTILITIES = [...COLOR, ...TEXT];
+const BUTTON_UTILITIES: any[] = [];
 const BUTTON_INHERIT = ['disabled'];
 export type ButtonProperties = ButtonPropertyBasic & ButtonPropertyValues;
 export type SystemCButtonProperties = ComponentPropertyBasic<ButtonPropertyBasic> & ComponentPropertyValues<ButtonPropertyValues>;

@@ -14,9 +14,9 @@ import ButtonBase, { ButtonBaseProps } from '../c-buttonBase/ButtonBase';
 
 export type ButtonProps =
     & SystemCButtonProperties
-    & Omit<ButtonBaseProps, keyof ButtonProperties>
-    & Omit<SystemColorProperties, keyof ButtonProperties>
-    & Omit<SystemSTextProperties, keyof ButtonProperties> & {};
+    & Omit<ButtonBaseProps, keyof ButtonProperties>;
+// & Omit<SystemColorProperties, keyof ButtonProperties>
+// & Omit<SystemSTextProperties, keyof ButtonProperties> & {};
 
 
 
@@ -26,6 +26,7 @@ export const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(f
     className,
     startIcon,
     endIcon,
+    text,
     ...restProps
 }: PropsRef<C, ButtonProps>, ref?: PolymorphicRef<C>) {
 
@@ -45,6 +46,7 @@ export const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(f
     ];
     const classes = classNames(arrayClasses);
 
+
     return (
         <ButtonBase
             as={as}
@@ -54,7 +56,7 @@ export const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(f
             className={classes}
         >
             {startIcon && <span className='c-button__icon'>{startIcon}</span>}
-            {children}
+            {children || text}
             {endIcon && <span className='c-button__icon'>{endIcon}</span>}
         </ButtonBase>
     );
