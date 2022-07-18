@@ -17,3 +17,9 @@
 
 // KEYFRAMES: Animaciones
 @import 'keyframes/keyframes';
+
+// OBJECTS: Bloques reutilizables en componentes u otros componentes de UI.
+@import 'objects/index';
+
+// COMPONENTS: Bloques de UI reutilizables.
+@import 'components/index';
