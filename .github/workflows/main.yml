@@ -31,7 +31,7 @@ jobs:
         run: npm run preinstall
 
       - name: Install Dependencies
-        run: npm install
+        run: npm i
       
       - name: Build App
         run: npm run build
