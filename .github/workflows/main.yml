@@ -26,9 +26,6 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: 14.17
-      
-      - name: Pre-install dependencies
-        run: npm run preinstall
 
       - name: Install Dependencies
         run: npm i
