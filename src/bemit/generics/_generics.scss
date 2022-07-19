@@ -1,10 +1,10 @@
 :root {
   @include mx-declaration-for-breakpoints($setting-root);
   @include mx-declaration-for-breakpoints($font-size-root);
-  @include mx-declaration-for-breakpoints($colors-light-root);
+  @include mx-generate-declaration($colors-light-root);
 
   .#{$dark-theme} {
-    @include mx-declaration-for-breakpoints($colors-dark-root);
+    @include mx-generate-declaration($colors-dark-root);
   }
 }
 

@@ -5,7 +5,7 @@
 ////
 
 /// Sobreescribe el metodo fn-hsl de sass. EVITAMOS hsl => HEX.
-@function fn-hsl($h, $s, $l) {
+@function hsl($h, $s, $l) {
   @return unquote('hsl(#{$h}, #{$s}, #{$l})');
 }
 

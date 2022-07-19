@@ -69,23 +69,3 @@ $palletes: (
   'yellow': $yellow,
   'gray': $gray,
 );
-
-:root {
-  @each $name-color, $values in $palletes {
-    @each $key, $value in $values {
-      $selector: '--#{$name-color}-#{$key}';
-      #{$selector}: #{$value};
-    }
-  }
-}
-@each $size in $sizes {
-  $new-size: fn-convert-bp($size);
-
-  @each $name-color, $values in $palletes {
-    .u-pallete#{$new-size}-#{$name-color} {
-      @each $property, $value in $values {
-        --color-#{$property}: var(--#{$name-color}-#{$property});
-      }
-    }
-  }
-}
