@@ -6,7 +6,7 @@ import { SystemCTouchRippleProperties } from '../../../generic/systemComponentPr
 export interface TouchRippleProps extends SystemCTouchRippleProperties { }
 
 
-const TouchRipple = ({ centerRipple }: TouchRippleProps) => {
+export const TouchRipple = ({ centerRipple }: TouchRippleProps) => {
 
     const ref = useRef<HTMLDivElement>(null);
 

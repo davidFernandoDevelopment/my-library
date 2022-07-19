@@ -16,7 +16,7 @@ export type ButtonBaseProps =
     & Omit<TouchRippleProps, keyof ButtonBaseProperties>; // TIPO PARA COMPONENTE-DEP
 
 
-const ButtonBase: CPolymorphicRef<'button', ButtonBaseProps> = React.forwardRef(function ButtonBase<C extends React.ElementType>({
+export const ButtonBase: CPolymorphicRef<'button', ButtonBaseProps> = React.forwardRef(function ButtonBase<C extends React.ElementType>({
     as,
     style,
     children,
