@@ -27,6 +27,9 @@ jobs:
         with: 
           node-version: 14.17
       
+      - name: Pre-install dependencies
+        run: npm run preinstall
+
       - name: Install Dependencies
         run: npm install  && npx npm-force-resolutions
       
