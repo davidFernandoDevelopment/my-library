@@ -31,7 +31,7 @@ jobs:
         run: npm run preinstall
 
       - name: Install Dependencies
-        run: npm install  && npx npm-force-resolutions
+        run: npm install
       
       - name: Build App
         run: npm run build
