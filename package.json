@@ -19,8 +19,7 @@
     ]
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
