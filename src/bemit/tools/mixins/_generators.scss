@@ -14,7 +14,9 @@
 
 @mixin mx-generate-declaration($map, $prefix: '', $sufix: '') {
   @each $property, $value in $map {
-    #{$prefix}#{$property}#{$sufix}: #{$value};
+    @if $value != '' {
+      #{$prefix}#{$property}#{$sufix}: #{$value};
+    }
   }
 }
 

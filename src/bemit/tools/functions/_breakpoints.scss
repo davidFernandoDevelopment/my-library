@@ -53,8 +53,6 @@
     $new-value: null;
     @each $property in $base-properties {
       $name-values: map-get($name-alias, $alias);
-      @debug $name-values;
-      @debug length($name-values);
       @if length($name-values) > 1 {
         $ac: ();
         @each $name in $name-values {
