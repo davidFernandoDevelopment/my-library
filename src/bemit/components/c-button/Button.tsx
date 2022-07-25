@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
-import '../../main.css';
+// import '../../main.css';
 
 
 import { generateComponentClasses } from '../../../utilities/classForReact';
