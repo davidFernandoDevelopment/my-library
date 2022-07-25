@@ -20,7 +20,7 @@ $iconBase-properties: (
   ),
 );
 
-.c-iconBase {
+.SUI-c-iconBase {
   user-select: none;
   height: 1em;
   width: 1em;
@@ -32,7 +32,7 @@ $iconBase-properties: (
   @at-root {
     @include mx-generator-classes(
       'from',
-      ($iconBase-properties, '.c-iconBase-')
+      ($iconBase-properties, '.SUI-c-iconBase-')
     );
   }
 }

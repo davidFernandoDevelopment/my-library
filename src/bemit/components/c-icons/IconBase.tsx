@@ -21,7 +21,7 @@ const IconBase = <C extends SVGSVGElement>({
     );
     const arrayClasses = [
         generatedClasses,
-        'c-iconBase',
+        'SUI-c-iconBase',
         className,
     ];
     const classes = classNames(arrayClasses);

@@ -13,7 +13,7 @@ export const TouchRipple = ({ centerRipple }: TouchRippleProps) => {
     const rippleEffect = (e: MouseEvent<HTMLElement>) => {
         if (ref.current) {
             let circle = document.createElement('span');
-            circle.classList.add('c-touch__ripple');
+            circle.classList.add('SUI-c-touch__ripple');
 
             if (e.currentTarget) {
                 let offsetLeft = ref.current.getBoundingClientRect().left;
@@ -49,7 +49,7 @@ export const TouchRipple = ({ centerRipple }: TouchRippleProps) => {
         <span
             ref={ref}
             onClick={rippleEffect}
-            className='c-touch'
+            className='SUI-c-touch'
         ></span>
     );
 };

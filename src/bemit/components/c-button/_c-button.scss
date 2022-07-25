@@ -7,7 +7,7 @@ $transition-button: box-shadow 0.2s ease-in-out,
   background-color 0.2s ease-in-out, color 0.2s ease-in-out,
   border-color 0.2s ease-in-out;
 
-.c-button {
+.SUI-c-button {
   gap: var(--button-gap);
   font-weight: var(--font-medium);
   padding: var(--padding);
@@ -44,21 +44,21 @@ $transition-button: box-shadow 0.2s ease-in-out,
   @at-root {
     @include mx-generator-classes(
       'from',
-      ($button-properties-bp, '.c-button-')
+      ($button-properties-bp, '.SUI-c-button-')
     );
     @include mx-generate-map-properties(
       $button-properties-simple,
-      '.c-button-'
+      '.SUI-c-button-'
     );
     @include mx-generate-map-properties(
       $button-properties-pseudoclasses,
-      '.c-button-',
+      '.SUI-c-button-',
       ':hover'
     );
     @include mx-generate-map-properties(
       $button-disabled,
-      '.c-button-',
-      '.c-button--disabled'
+      '.SUI-c-button-',
+      '.SUI-c-button--disabled'
     );
   }
 }

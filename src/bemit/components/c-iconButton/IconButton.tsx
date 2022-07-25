@@ -30,11 +30,11 @@ export const IconButton: CPolymorphicRef<'button', IconButtonProps> = React.forw
         //eslint-disable-next-line
         []);
     const arrayClasses = [
-        'c-iconButton',
+        'SUI-c-iconButton',
         className,
         generatedClasses,
-        { 'c-iconButton--edge-start': edge === 'start' },
-        { 'c-iconButton--edge-end': edge === 'end' },
+        { 'SUI-c-iconButton--edge-start': edge === 'start' },
+        { 'SUI-c-iconButton--edge-end': edge === 'end' },
     ];
     const classes = classNames(arrayClasses);
 

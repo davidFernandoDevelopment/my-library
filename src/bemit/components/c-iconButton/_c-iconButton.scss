@@ -2,7 +2,7 @@
 @use "../../tools" as *;
 @use 'c-iconButton-settings' as *;
 
-.c-iconButton {
+.SUI-c-iconButton {
   flex: 0 0 auto;
   padding: 8px;
   color: var(--main, var(--gray-600));
@@ -38,11 +38,11 @@
   @at-root {
     @include mx-generate-map-properties(
       $iconButton-properties-simple,
-      '.c-iconButton-'
+      '.SUI-c-iconButton-'
     );
     @include mx-generator-classes(
       'from',
-      ($iconButton-properties-bp, '.c-iconButton-')
+      ($iconButton-properties-bp, '.SUI-c-iconButton-')
     );
   }
 }

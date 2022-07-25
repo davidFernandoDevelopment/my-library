@@ -33,7 +33,7 @@ export const ButtonBase: CPolymorphicRef<'button', ButtonBaseProps> = React.forw
     );
 
     const arrayClasses = [
-        'c-buttonBase',
+        'SUI-c-buttonBase',
         className,
         generatedClasses
     ];

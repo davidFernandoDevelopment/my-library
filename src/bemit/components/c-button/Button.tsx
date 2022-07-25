@@ -39,7 +39,7 @@ export const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(f
     );
 
     const arrayClasses = [
-        'c-button',
+        'SUI-c-button',
         className,
         generatedClasses
     ];
@@ -54,9 +54,9 @@ export const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(f
             {...restInherit}
             className={classes}
         >
-            {startIcon && <span className='c-button__icon'>{startIcon}</span>}
+            {startIcon && <span className='SUI-c-button__icon'>{startIcon}</span>}
             {children || text}
-            {endIcon && <span className='c-button__icon'>{endIcon}</span>}
+            {endIcon && <span className='SUI-c-button__icon'>{endIcon}</span>}
         </ButtonBase>
     );
 });
