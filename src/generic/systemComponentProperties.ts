@@ -13,7 +13,7 @@ export type SystemCTouchRippleProperties = ComponentPropertyValues<TouchRipplePr
 
 
 
-const BUTTON_BASE = [['disabled', 'c-buttonBase--disabled']];
+const BUTTON_BASE = [['disabled', 'SUI-c-buttonBase--disabled']];
 type ButtonBasePropertyBasic = {
     disabled: boolean;
     disableRipple: boolean;
@@ -34,7 +34,7 @@ export const ButtonBasePropertySummary: ComponentPropertySummary = {
 
 
 
-const ICON_BASE = [['size', 'c-iconBase--size']] as const;
+const ICON_BASE = [['size', 'SUI-c-iconBase--size']] as const;
 type IconBasePropertyValues = {
     rotate: boolean;
     size: Sizes | 'xsmall';
@@ -53,7 +53,7 @@ export const IconBasePropertySummary: ComponentPropertySummary = {
 
 
 
-const BUTTON = [['size', 'c-button--size'], ['variant', 'c-button--variant'], ['fullWidth', 'c-button--fullWidth'], ['disableElevation', 'c-button--disableElevation'], ['disabled', 'c-button--disabled']] as const;
+const BUTTON = [['size', 'SUI-c-button--size'], ['variant', 'SUI-c-button--variant'], ['fullWidth', 'SUI-c-button--fullWidth'], ['disableElevation', 'SUI-c-button--disableElevation'], ['disabled', 'SUI-c-button--disabled']] as const;
 type ButtonPropertyBasic = {
     text: string;
     endIcon: React.ReactNode;
