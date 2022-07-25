@@ -1,3 +1,6 @@
+@use "../tools" as *;
+@use "../theme" as *;
+
 /* ---------------- TAGS (BASE) ---------------- */
 html {
   scroll-behavior: smooth;

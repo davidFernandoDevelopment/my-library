@@ -1,8 +1,8 @@
 // Mapa de paletas basicos.
-@import 'pallete';
+@forward "pallete";
 // Variables Sass.
-@import 'colors';
+@forward "colors";
 // Variables CSS.
-@import 'variables';
+@forward "variables";
 // Generador de variables CSS.
-@import 'theme';
+@forward "theme";

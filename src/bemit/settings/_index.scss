@@ -1,8 +1,8 @@
-@import 'constants';
-@import 'breakpoints';
-@import 'generics';
-@import 'layout';
-@import 'transitions';
-@import 'z-index';
+@forward 'constants';
+@forward 'breakpoints';
+@forward 'generics';
+@forward 'layout';
+@forward 'transitions';
+@forward 'z-index';
 
-@import 'variables';
+@forward 'variables';

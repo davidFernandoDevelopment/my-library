@@ -1,3 +1,8 @@
+@use "../settings" as *;
+@use "../theme" as *;
+@use "../tools/mixins" as *;
+
+
 :root {
   @include mx-declaration-for-breakpoints($setting-root);
   @include mx-declaration-for-breakpoints($font-size-root);

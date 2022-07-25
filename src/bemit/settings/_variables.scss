@@ -1,3 +1,8 @@
+@use "./z-index" as *;
+@use "./layout" as *;
+@use "./generics" as *;
+@use "./transitions" as *;
+
 $setting-root: (
   xxs: (
     // Z-INDEX

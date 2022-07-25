@@ -1,29 +1,27 @@
 @charset 'utf-8';
 
 // SETTINGS: Variables globales.
-@import 'settings/index';
+// @use 'settings';
 
 //  SETTINGS: Variables de tema (colores y tipografía).
-@import 'theme/index';
+// @use 'theme';
 
 // TOOLS: Mixins y Funciones
-@import 'tools/index';
+// @forward 'tools/index';
 
 // GENERICS: Inicialización de variables y estilos de reset.
-@import 'generics/generics';
+@forward 'generics';
 
 // TAGS: Estilos globales para las etiquetas.
-@import 'tags/tags';
+@forward 'tags';
 
 // KEYFRAMES: Animaciones
-@import 'keyframes/keyframes';
+@forward 'keyframes';
 
 // OBJECTS: Bloques reutilizables en componentes u otros componentes de UI.
-@import 'objects/index';
+@forward "objects";
 
 // COMPONENTS: Bloques de UI reutilizables.
-@import 'components/index';
+@forward "components";
 
-@import 'objects/index';
-
-@import 'utilities/index';
+// @forward "utilities";

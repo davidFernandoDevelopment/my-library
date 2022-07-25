@@ -1,2 +1,2 @@
-@import 'colors/index';
-@import 'typography/index';
+@forward "colors";
+@forward "typography";

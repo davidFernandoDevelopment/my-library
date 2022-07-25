@@ -1,8 +1,9 @@
 /* Importación de fuente */
+@use "../../tools" as *;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
 
-@import '../../tools/functions/convert_unids';
 
 $heading-font: Poppins, sans-serif !default;
 $body-font: 'Open Sans', sans-serif !default;

@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "../../settings" as *;
+
 ////
 /// @group Tools
 /// @access private
@@ -7,8 +10,6 @@
 /// Convierte a rem
 /// @param {Length} $size - Longitud (px) que se convertira a rem.
 /// @return {Length}
-
-@use "sass:math";
 
 @function fn-calculate-rem($size) {
   $rem-size: math.div($size, 16px);

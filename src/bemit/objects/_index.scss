@@ -1,4 +1,4 @@
-@import 'o-grid';
-@import 'o-typography';
-@import 'o-container/o-container';
-@import 'o-grid-system/o-flex';
+@forward 'o-grid';
+@forward 'o-typography';
+@forward 'o-container/o-container';
+@forward 'o-grid-system/o-flex';

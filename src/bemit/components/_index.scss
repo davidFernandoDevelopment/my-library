@@ -1,10 +1,10 @@
 // ICONS
-@import 'c-icons/iconBase';
+@forward 'c-icons/iconBase';
 // ICONS
 
 // BUTTON
-@import 'c-touchRipple/c-touchRipple';
-@import 'c-buttonBase/c-buttonBase';
-@import 'c-button/c-button';
-@import 'c-iconButton/c-iconButton';
+@forward 'c-touchRipple/c-touchRipple';
+@forward 'c-buttonBase/c-buttonBase';
+@forward 'c-button/c-button';
+@forward 'c-iconButton/c-iconButton';
 // BUTTON

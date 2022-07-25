@@ -1,6 +1,6 @@
-@import '../../tools/mixins/generators';
-@import '../../tools/mixins/breakpoints';
-@import '../../tools/functions/breakpoints';
+@use "../../settings" as *;
+@use "../../tools" as *;
+@use "./variables" as *;
 
 $theme-colors: (
   'primary': (

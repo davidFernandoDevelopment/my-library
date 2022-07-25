@@ -1,4 +1,6 @@
-@import 'c-iconButton-settings';
+@use "../../settings" as *;
+@use "../../tools" as *;
+@use 'c-iconButton-settings' as *;
 
 .c-iconButton {
   flex: 0 0 auto;

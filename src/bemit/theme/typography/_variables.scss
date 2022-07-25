@@ -1,3 +1,5 @@
+@use './typography' as *;
+
 $font-size-root: (
   xxs: (
     --heading-font: #{$heading-font},
@@ -5,7 +7,7 @@ $font-size-root: (
     --font-normal: #{$font-normal},
     --font-medium: #{$font-medium},
     --font-semi-bold: #{$font-semi-bold},
-    --font-bold: #{font-bold},
+    --font-bold: #{$font-bold},
     --heading-line-height: #{$heading-line-height},
     --body-line-height: #{$body-line-height},
     --letter-spacing-heading: #{$letter-spacing-heading},

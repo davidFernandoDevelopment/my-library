@@ -1,6 +1,8 @@
 /* LAYOUT FLEX: SIEMPRE EL FLEX-CONTAINER DEBE ESTAR DENTRO DE UN CONTAINER */
 
 @use "sass:math";
+@use "../../settings" as *;
+@use "../../tools" as *;
 
 $container: 'row';
 $item: 'col';

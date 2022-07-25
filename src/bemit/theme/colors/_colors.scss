@@ -1,3 +1,5 @@
+@use "./pallete" as *;
+
 // LIGHT-MODE
 
 $title-color-light: map-get($gray, '700');

@@ -1,4 +1,6 @@
-@import 'c-button-settings';
+@use "../../settings" as *;
+@use "../../tools" as *;
+@use 'c-button-settings' as *;
 
 $transition-button: box-shadow 0.2s ease-in-out,
   background-color 0.2s ease-in-out, color 0.2s ease-in-out,

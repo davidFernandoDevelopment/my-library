@@ -3,6 +3,9 @@
 /// @author David Sanchez
 ////
 
+@use "../../settings" as *;
+
+
 /// Generan estilos para los titulos.
 @mixin heading-font($extrabold: false) {
   line-height: var(--heading-line-height);

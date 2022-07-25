@@ -9,6 +9,7 @@
   position: relative;
   user-select: none;
   overflow: hidden;
+  background-color: inherit;
 
   &--disabled {
     pointer-events: none;

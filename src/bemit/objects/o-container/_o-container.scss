@@ -1,3 +1,6 @@
+@use "../../tools" as *;
+@use "../../settings" as *;
+
 $maxwidth: (
   sm: 540px,
   md: 720px,

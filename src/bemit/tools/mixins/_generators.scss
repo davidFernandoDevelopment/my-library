@@ -1,11 +1,12 @@
-@import '../../settings/breakpoints';
-@import '../functions/breakpoints';
-@import '../mixins/breakpoints';
-
 ////
 /// @group Tools
 /// @author David Sanchez
 ////
+
+@use "../../settings" as *;
+@use "../../tools/functions" as *;
+@use "../../tools/mixins/breakpoints" as *;
+@use "./breakpoints" as *;
 
 /// Generar declaraciones CSS a partir de un mapa opcionalmente se puede agregar prefijos y sufijos.
 /// @param {Map} $map - Map de entrada.
