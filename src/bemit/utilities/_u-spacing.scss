@@ -45,4 +45,4 @@ $spacing-properties: (
 );
 $spacing-total: fn-add-base-properties($spacing-properties, $alias-spacing);
 
-@include mx-generator-classes('from', ($spacing-total, '.u'));
+@include mx-generator-classes('from', ($spacing-total, '.SUI-u'));

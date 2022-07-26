@@ -28,17 +28,17 @@ const ORow: CPolymorphic<'div', ORowProps> = <C extends React.ElementType>({
     const { xxs, xs, sm, md, lg, xl, xxl } = columns;
 
     const arrayClasses = [
-        'o-row',
+        'SUI-o-row',
         className,
         generatedClasses,
         { [`${p}__row`]: p },
-        { [`o-col-${xxs}`]: xxs },
-        { [`o-col-xs-${xs}`]: xs },
-        { [`o-col-sm-${sm}`]: sm },
-        { [`o-col-md-${md}`]: md },
-        { [`o-col-lg-${lg}`]: lg },
-        { [`o-col-xl-${xl}`]: xl },
-        { [`o-col-xxl-${xxl}`]: xxl },
+        { [`SUI-o-col-${xxs}`]: xxs },
+        { [`SUI-o-col-xs-${xs}`]: xs },
+        { [`SUI-o-col-sm-${sm}`]: sm },
+        { [`SUI-o-col-md-${md}`]: md },
+        { [`SUI-o-col-lg-${lg}`]: lg },
+        { [`SUI-o-col-xl-${xl}`]: xl },
+        { [`SUI-o-col-xxl-${xxl}`]: xxl },
     ];
 
     const classes = classNames(arrayClasses);

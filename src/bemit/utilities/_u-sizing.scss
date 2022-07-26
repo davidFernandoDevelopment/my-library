@@ -26,4 +26,4 @@ $sizing-properties: (
 );
 $sizing-total: fn-add-base-properties($sizing-properties, $name-alias);
 
-@include mx-generator-classes('from', ($sizing-total, '.u'));
+@include mx-generator-classes('from', ($sizing-total, '.SUI-u'));

@@ -105,4 +105,4 @@ $flex-properties: (
 );
 $flex-total: fn-add-base-properties($flex-properties, $name-alias);
 
-@include mx-generator-classes('from', ($flex-total, '.u'));
+@include mx-generator-classes('from', ($flex-total, '.SUI-u'));

@@ -19,4 +19,4 @@ $overflow-properties: (
 );
 $overflow-total: fn-add-base-properties($overflow-properties, $alias-overflow);
 
-@include mx-generator-classes('from', ($overflow-total, '.u'));
+@include mx-generator-classes('from', ($overflow-total, '.SUI-u'));

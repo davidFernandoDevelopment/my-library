@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { generateComponentClasses } from '../../../utilities/classForReact';
 import { ButtonProperties, ButtonPropertySummary, SystemCButtonProperties } from '../../../generic/systemComponentProperties';
 import { PropsRef, PolymorphicRef, CPolymorphicRef } from '../../../generic/PolymorphicGeneric';
-import { SystemColorProperties, SystemSTextProperties } from '../../../generic/systemStyleProperties';
 import ButtonBase, { ButtonBaseProps } from '../c-buttonBase/ButtonBase';
 
 
@@ -14,8 +13,6 @@ import ButtonBase, { ButtonBaseProps } from '../c-buttonBase/ButtonBase';
 export type ButtonProps =
     & SystemCButtonProperties
     & Omit<ButtonBaseProps, keyof ButtonProperties>;
-// & Omit<SystemColorProperties, keyof ButtonProperties>
-// & Omit<SystemSTextProperties, keyof ButtonProperties> & {};
 
 
 
@@ -25,7 +22,6 @@ export const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(f
     className,
     startIcon,
     endIcon,
-    text,
     ...restProps
 }: PropsRef<C, ButtonProps>, ref?: PolymorphicRef<C>) {
 
@@ -55,7 +51,7 @@ export const Button: CPolymorphicRef<'button', ButtonProps> = React.forwardRef(f
             className={classes}
         >
             {startIcon && <span className='SUI-c-button__icon'>{startIcon}</span>}
-            {children || text}
+            {children}
             {endIcon && <span className='SUI-c-button__icon'>{endIcon}</span>}
         </ButtonBase>
     );

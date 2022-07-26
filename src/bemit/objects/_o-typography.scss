@@ -1,7 +1,7 @@
 @use "../settings" as *;
 @use "../tools" as *;
 
-@include mx-breakpoints {
+@include mx-breakpoints('SUI-o') {
   // Assign heading styles
   &-big-title {
     @include big-title;

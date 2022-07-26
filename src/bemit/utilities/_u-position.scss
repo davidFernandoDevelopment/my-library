@@ -22,4 +22,4 @@ $position-properties: (
 );
 $position-total: fn-add-base-properties($position-properties, $alias-position);
 
-@include mx-generator-classes('from', ($position-total, '.u'));
+@include mx-generator-classes('from', ($position-total, '.SUI-u'));

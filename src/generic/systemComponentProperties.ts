@@ -1,4 +1,4 @@
-import { Anchor, Breakpoint, ContainerlessBreakpoints, OriginAlign, Placement, ShadowValues, Sizes, UnitValues } from './setting';
+import { Anchor, Breakpoint, ContainerlessBreakpoints, OriginAlign, Placement, ShadowValues, Sizes, ThemeColor, UnitValues } from './setting';
 import { BORDER, COLOR, DISPLAY, FLEXBOX_CONTAINER, FLEXBOX_ITEM, SystemStyleProperties, TEXT } from './systemStyleProperties';
 import { ComponentPropertyBasic, ComponentPropertySummary, ComponentPropertyValues } from './utils';
 
@@ -9,11 +9,11 @@ import { ComponentPropertyBasic, ComponentPropertySummary, ComponentPropertyValu
 export type TouchRippleProperties = {
     centerRipple: boolean;
 };
-export type SystemCTouchRippleProperties = ComponentPropertyValues<TouchRippleProperties>;
+export type SystemCTouchRippleProperties = ComponentPropertyBasic<TouchRippleProperties>;
 
 
 
-const BUTTON_BASE = [['disabled', 'SUI-c-buttonBase--disabled']];
+const BUTTON_BASE = [['disabled', 'c-buttonBase--disabled']];
 type ButtonBasePropertyBasic = {
     disabled: boolean;
     disableRipple: boolean;
@@ -34,7 +34,7 @@ export const ButtonBasePropertySummary: ComponentPropertySummary = {
 
 
 
-const ICON_BASE = [['size', 'SUI-c-iconBase--size']] as const;
+const ICON_BASE = [['size', 'c-iconBase--size']] as const;
 type IconBasePropertyValues = {
     rotate: boolean;
     size: Sizes | 'xsmall';
@@ -53,15 +53,15 @@ export const IconBasePropertySummary: ComponentPropertySummary = {
 
 
 
-const BUTTON = [['size', 'SUI-c-button--size'], ['variant', 'SUI-c-button--variant'], ['fullWidth', 'SUI-c-button--fullWidth'], ['disableElevation', 'SUI-c-button--disableElevation'], ['disabled', 'SUI-c-button--disabled']] as const;
+const BUTTON = [['size', 'c-button--size'], ['variant', 'c-button--variant'], ['fullWidth', 'c-button--fullWidth'], ['disableElevation', 'c-button--disableElevation'], ['disabled', 'c-button--disabled']] as const;
 type ButtonPropertyBasic = {
-    text: string;
     endIcon: React.ReactNode;
     startIcon: React.ReactNode;
     variant: 'default' | 'ghost' | 'link' | 'light';
     disabled: boolean;
     fullWidth: boolean;
     disableElevation: boolean;
+    themeColor: ThemeColor;
 };
 type ButtonPropertyValues = {
     /**
@@ -71,9 +71,10 @@ type ButtonPropertyValues = {
 };
 const BUTTON_DEFAULTS: Partial<ButtonProperties> = {
     variant: 'default',
-    size: 'normal'
+    size: 'normal',
+    themeColor: 'primary'
 };
-const BUTTON_UTILITIES: any[] = [];
+const BUTTON_UTILITIES: any[] = [...COLOR];
 const BUTTON_INHERIT = ['disabled'];
 export type ButtonProperties = ButtonPropertyBasic & ButtonPropertyValues;
 export type SystemCButtonProperties = ComponentPropertyBasic<ButtonPropertyBasic> & ComponentPropertyValues<ButtonPropertyValues>;
@@ -110,15 +111,23 @@ type IconButtonBasic = {
     disabled: boolean;
     edge: 'start' | 'end';
     variant: 'circle' | 'square';
+    /**
+     * Colores del componente, puede cambiar la sombra con la propiedad sx={{pallete}}
+     */
+    themeColor: ThemeColor;
 };
 type IconButtonPropertyValues = {
+    /**
+     * Tamaño del componente, Sizes = "small" | "normal" | "large" | "xlarge". Admite breakpoints
+     */
     size: Sizes,
 };
 const ICON_BUTTON_DEFAULTS: Partial<IconButtonProperties> = {
     variant: 'circle',
-    size: 'normal'
+    size: 'normal',
+    themeColor: 'primary'
 };
-const ICON_BUTTON_UTILITIES: any[] = [];
+const ICON_BUTTON_UTILITIES = [...COLOR];
 const ICON_BUTTON_INHERIT = ['disabled'];
 export type IconButtonProperties = IconButtonPropertyValues & IconButtonBasic;
 export type SystemCIconButtonProperties = ComponentPropertyValues<IconButtonPropertyValues> & ComponentPropertyBasic<IconButtonBasic>;

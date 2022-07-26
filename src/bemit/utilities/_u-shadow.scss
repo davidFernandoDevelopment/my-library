@@ -21,4 +21,4 @@ $shadow-properties: (
 );
 $shadow-total: fn-add-base-properties($shadow-properties, $alias-shadow);
 
-@include mx-generator-classes('from', ($shadow-total, '.u'));
+@include mx-generator-classes('from', ($shadow-total, '.SUI-u'));

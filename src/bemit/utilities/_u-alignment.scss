@@ -32,4 +32,4 @@ $block-aligments: (
   ),
 );
 
-@include mx-generator-classes('from', ($block-aligments, '.u'));
+@include mx-generator-classes('from', ($block-aligments, '.SUI-u'));

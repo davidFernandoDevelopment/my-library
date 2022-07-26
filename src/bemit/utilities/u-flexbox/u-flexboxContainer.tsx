@@ -24,7 +24,7 @@ const UFlexContainer: CPolymorphic<'div', UFlexContainerProps> = <C extends Reac
         []
     );
     const arrayClasses = [
-        'u-d-flex',
+        'SUI-u-d-flex',
         className,
         generatedClasses,
     ];

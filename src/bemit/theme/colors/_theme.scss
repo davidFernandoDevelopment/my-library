@@ -55,7 +55,7 @@ $theme-colors: (
     @each $key, $value in $theme-colors {
       @if length($value) >1 {
         @at-root {
-          .u-theme-color#{$new-size}-#{$key} {
+          .SUI-u-theme-color#{$new-size}-#{$key} {
             @include mx-generate-declaration($value, '--');
           }
         }

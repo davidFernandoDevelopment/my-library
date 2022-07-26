@@ -22,7 +22,7 @@ const generateClassObject = (prefix: string, prop: any): string => {
     if (prop && typeof prop == 'object' && Array.isArray(prop)) {
         let style = prop.map(bp => {
             let newSize = bp === 'xxs' ? '' : `-${bp}`;
-            return `${prefix}${newSize}`;
+            return `SUI-${prefix}${newSize}`;
         }).join(' ');
         result = [
             ...result,
@@ -39,7 +39,7 @@ const generateClassObject = (prefix: string, prop: any): string => {
                 let val = p[key] && typeof p[key] === 'number' ?
                     `-${generateDecimal(p[key] as unknown as number)}` :
                     (typeof p[key] === 'boolean' ? '' : `-${p[key]}`);
-                let style = `${prefix}${size}${val}`;
+                let style = `SUI-${prefix}${size}${val}`;
                 result = [
                     ...result,
                     style
@@ -52,7 +52,7 @@ const generateClassObject = (prefix: string, prop: any): string => {
         let val = typeof prop === 'number' ?
             `-${generateDecimal(prop as unknown as number)}` :
             (typeof prop === 'boolean' ? '' : `-${prop}`);
-        let style = `${prefix}${val}`;
+        let style = `SUI-${prefix}${val}`;
 
         result = [
             ...result,

@@ -29,4 +29,4 @@ $display-properties: (
 
 $display-total: fn-add-base-properties($display-properties, $alias-display);
 
-@include mx-generator-classes('from', ($display-total, '.u'));
+@include mx-generator-classes('from', ($display-total, '.SUI-u'));

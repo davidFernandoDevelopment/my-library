@@ -6,14 +6,12 @@ import { generateComponentClasses } from '../../../utilities/classForReact';
 import { IconButtonPropertySummary, SystemCIconButtonProperties, IconButtonProperties } from '../../../generic/systemComponentProperties';
 import { CPolymorphicRef, PolymorphicRef, PropsRef } from '../../../generic/PolymorphicGeneric';
 import { ButtonBaseProps } from '../c-buttonBase/ButtonBase';
-import { SystemColorProperties } from '../../../generic/systemStyleProperties';
 
 
 
 export type IconButtonProps =
     & SystemCIconButtonProperties
-    & Omit<SystemColorProperties, keyof IconButtonProperties>
-    & Omit<ButtonBaseProps, keyof IconButtonProperties> & {};
+    & Omit<ButtonBaseProps, keyof IconButtonProperties | 'centerRipple'> & {};
 
 export const IconButton: CPolymorphicRef<'button', IconButtonProps> = React.forwardRef(<C extends React.ElementType>({
     children,

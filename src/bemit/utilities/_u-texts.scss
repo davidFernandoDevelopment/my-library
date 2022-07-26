@@ -93,4 +93,4 @@ $text-properties: (
 );
 $text-total: fn-add-base-properties($text-properties, $alias-text);
 
-@include mx-generator-classes('from', ($text-total, '.u'));
+@include mx-generator-classes('from', ($text-total, '.SUI-u'));

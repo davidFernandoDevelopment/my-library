@@ -29,4 +29,4 @@ $border-properties: fn-map-merge-modified(
 
 $border-total: fn-add-base-properties($border-properties, $alias-border);
 
-@include mx-generator-classes('from', ($border-total, '.u'));
+@include mx-generator-classes('from', ($border-total, '.SUI-u'));
