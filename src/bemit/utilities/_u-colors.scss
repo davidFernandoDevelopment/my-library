@@ -1,3 +1,7 @@
+@use '../tools' as *;
+@use '../settings' as *;
+@use '../theme' as *;
+
 @each $size in $sizes {
   $new-size: fn-convert-bp($size);
 

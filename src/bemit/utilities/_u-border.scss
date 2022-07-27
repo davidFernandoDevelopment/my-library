@@ -1,3 +1,6 @@
+@use '../settings/constants' as *;
+@use '../tools' as *;
+
 $BORDER_STYLE: 'solid', 'dashed', 'dotted', 'double', 'groove', 'hidden';
 $BORDER_DEFAULT: (
   '': '#{1px solid var(--border-color)}',

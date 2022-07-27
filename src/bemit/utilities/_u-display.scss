@@ -1,6 +1,9 @@
+@use '../tools' as *;
+
 $alias-display: (
   d: display,
 );
+
 $display-properties: (
   d: (
     none: (
